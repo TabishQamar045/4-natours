@@ -11,18 +11,16 @@ const {
 } = require('../controllers/tourController');
 const router = express.Router();
 
-// router.param('id', checkId);
+// Basic routes
+router.get('/', getAllTours);
+router.post('/', createTour);
+router.get('/:id', getTour);
+router.patch('/:id', updateTour);
+router.delete('/:id', deleteTour);
 
-
-// Aliased routes
-router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
-
-// Stats routes
-router.route('/tour-stats').get(getTourStats);
-router.route('/monthly-plan/:year').get(getMonthlyPlan);
-
-// Standard routes
-router.route('/').get(getAllTours).post(createTour);
-router.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
+// Special routes
+router.get('/top-5-cheap', aliasTopTours, getAllTours);
+router.get('/tour-stats', getTourStats);
+router.get('/monthly-plan/:year', getMonthlyPlan);
 
 module.exports = router;

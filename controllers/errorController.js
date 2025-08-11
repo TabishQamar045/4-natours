@@ -6,7 +6,6 @@ const handleCastErrorDB = err => {
 };
 
 const handleDuplicateFieldsDB = err => {
-  console.log(err);
   // Modern Mongoose provides keyValue with the offending fields
   const value = err.keyValue ? JSON.stringify(err.keyValue) : 'duplicate value';
   const message = `Duplicate field value: ${value}. Please use another value!`;

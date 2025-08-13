@@ -6,7 +6,11 @@ const {
   updateUser,
   deleteUser,
 } = require('../controllers/userController');
+const {signup}=require('../controllers/authController');
 const router = express.Router();
+
+router.post('/signup',signup)
+
 
 router.get('/', getAllUsers);
 router.post('/', createUser);
